@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2lpcjpkvkkut"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_mkp51"]
+[ext_resource type="Texture2D" uid="uid://bqnkkvn22g80i" path="res://Assets/space.jpeg" id="1_spkjy"]
+[ext_resource type="PackedScene" uid="uid://davp24f7kh7nh" path="res://Scenes/player.tscn" id="2_gcx2y"]
+[ext_resource type="PackedScene" uid="uid://b4ulk5cmy5xqm" path="res://Scenes/hud.tscn" id="3_wi0qh"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="4_nm41j"]
+[ext_resource type="PackedScene" uid="uid://cft7ktrpdxmys" path="res://Scenes/game_over.tscn" id="4_yft7y"]
+[ext_resource type="AudioStream" uid="uid://bkevjyv8xv5e7" path="res://Assets/blaster.wav" id="7_vidwu"]
+[ext_resource type="AudioStream" uid="uid://ba1mofokxy04g" path="res://Assets/explosion.wav" id="8_grmao"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_mkp51")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -130.0
+offset_top = -214.0
+offset_right = 2120.0
+offset_bottom = 1286.0
+texture = ExtResource("1_spkjy")
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("3_wi0qh")]
+
+[node name="GameOver" parent="UI" instance=ExtResource("4_yft7y")]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+
+[node name="Player" parent="." instance=ExtResource("2_gcx2y")]
+position = Vector2(960, 540)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("4_nm41j")
+
+[node name="Lasers" type="Node2D" parent="."]
+
+[node name="Meteors" type="Node" parent="."]
+
+[node name="LaserShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vidwu")
+
+[node name="MeteorDie" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_grmao")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

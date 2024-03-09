@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4ulk5cmy5xqm"]
+
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_g4y0o"]
+[ext_resource type="FontFile" uid="uid://yadrijir7ewt" path="res://Assets/white-rabbit.TTF" id="2_8wuvb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ucpf1"]
+font = ExtResource("2_8wuvb")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_xf1qc"]
+font_size = 24
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_g4y0o")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 27.0
+offset_right = 430.0
+offset_bottom = 77.0
+text = "SCORE: 9999"
+label_settings = SubResource("LabelSettings_ucpf1")
+
+[node name="FPS" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1808.0
+offset_top = 6.0
+offset_right = 1934.0
+offset_bottom = 51.0
+text = "FPS: 999"
+label_settings = SubResource("LabelSettings_xf1qc")

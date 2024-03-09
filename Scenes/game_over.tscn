@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cft7ktrpdxmys"]
+
+[ext_resource type="FontFile" uid="uid://yadrijir7ewt" path="res://Assets/white-rabbit.TTF" id="1_opxwe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4hnh3"]
+font = ExtResource("1_opxwe")
+font_size = 150
+
+[sub_resource type="LabelSettings" id="LabelSettings_77bvu"]
+font = ExtResource("1_opxwe")
+font_size = 70
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -387.0
+offset_top = -77.0
+offset_right = 387.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_4hnh3")
+
+[node name="RestartText" type="Label" parent="GameOverText"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = 50.0
+offset_right = 360.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PRESS R TO RESTART"
+label_settings = SubResource("LabelSettings_77bvu")

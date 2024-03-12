@@ -2,22 +2,20 @@ class_name Meteor extends Area2D
 
 signal exploded
 
-var movement_vector := Vector2(0, -1)
-
 @onready var sprite = $MeteorSprite
 
+var movement_vector := Vector2(0, -1)
 var speed := 200
 
 func _ready():
 	rotation = randf_range(0, 2*PI)
-	pass
-	
+
 
 func _physics_process(delta):
-	global_position += movement_vector.rotated(rotation) * speed * delta
-	
 	var screen_size = get_viewport_rect().size
 	var radius := 100
+	
+	global_position += movement_vector.rotated(rotation) * speed * delta
 	
 	if (global_position.y + radius) < 0:
 		global_position.y = (screen_size.y + radius)
@@ -28,12 +26,11 @@ func _physics_process(delta):
 		global_position.x = (screen_size.x + radius)
 	elif (global_position.x - radius) > screen_size.x:
 		global_position.x = -radius
-		
-		
+
+
 func explode():
 	emit_signal("exploded")
 	queue_free()
-
 
 
 func _on_body_entered(body):

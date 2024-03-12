@@ -13,19 +13,17 @@ var score := 0:
 	set(value):
 		score = value
 		hud.score = score
-		
+
 var meteor_scene = preload("res://Scenes/meteor.tscn")
 var spawn_wait = false
-
 
 func _ready():
 	game_over.visible = false 
 	score = 0
 	player.connect("laser_shoot", _on_player_laser_shoot)
 	player.connect("died", _on_player_died)
-	
 
-	
+
 func _process(delta):
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
@@ -44,19 +42,17 @@ func spawn_meteor():
 	meteor.global_position = Vector2(randf_range(100, 1800), -100)
 	meteor.connect("exploded", _on_meteor_explode)
 	meteors.add_child(meteor)
-	
-	
+
+
 func _on_player_laser_shoot(laser):
 	$LaserShoot.play()
 	lasers.add_child(laser)
-		
-		
+
+
 func _on_player_died():
 	game_over.visible = true
-	
-	
+
+
 func _on_meteor_explode():
 	$MeteorDie.play()
 	score += 1
-
-	

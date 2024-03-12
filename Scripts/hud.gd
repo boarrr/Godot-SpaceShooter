@@ -3,7 +3,7 @@ extends Control
 @onready var score = $Score:
 	set(value):
 		score.text = "SCORE: " + str(value)
-		
+
 @onready var fps_text = $FPS
 
 func _process(delta):
